@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Guardar selecciones</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(
+		function(){
+			var $filasImpares = $('tr.impar');
+			
+			 alert($filasImpares.length);
+			//equivale a alert($('tr.impar').length)
+			 
+			$filasImpares.css('outline','#ff0000 solid');
+			//equivale a $('tr.impar').css('outline','#ff0000 solid')
+	 
+	});
+</script>
+</head>
+<body>
+	    <table>
+		 <tr class="impar principal"></tr>
+		 <tr class="par"></tr>
+		 <tr class="impar"></tr>
+		 <tr class="par"></tr>
+		 <tr class="impar final"></tr>
+		 <tr class="par final"></tr>
+		</table>
+	
+</body>
+</html>

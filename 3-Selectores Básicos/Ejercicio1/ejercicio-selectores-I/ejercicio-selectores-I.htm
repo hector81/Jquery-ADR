@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ejercicio Selectores I</title>
+<style type="text/css">
+body{
+	font-family: verdana, arial, helvetica;
+}
+#samplesContainer .rojo{
+	color: #cc0000;
+}
+#samplesContainer .verde{
+	color: #00cc00;
+}
+#samplesContainer .azul{
+	color: #0000cc;
+}
+#samplesContainer .fondogris{
+	background-color: #cccccc;
+}
+
+#samplesContainer div:before{
+	content: "<DIV> ";
+	font-size: 10px;
+}
+#samplesContainer p:before{
+	content: "<P> ";
+	font-size: 10px;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#btnValidar").on("click", function(e){
+		e.preventDefault();
+		$("#debug").empty();
+		var cadSelector = $("#selectorValidar").val();
+		if (cadSelector=="" || cadSelector=="*"){
+			alert("Escribe un selector v·lido")
+		}else{
+			try{
+				$("#debug").append("<span>Intentando capturar el selector $('"+cadSelector+"')</span>");
+				$seleccion = $(cadSelector, $("#samplesContainer"));
+				console.log("----------------------------");
+				console.log($seleccion);
+				$seleccion.fadeOut("normal", function(){
+					$seleccion.fadeIn("normal", function(){
+						$seleccion.fadeOut("normal", function(){
+							$seleccion.fadeIn("normal");
+						});
+					});
+				});
+			}catch(e){
+				alert("Ha ocurrido un error al validar el selector. Verifica la cadena introducida.");
+			}
+		}
+	});
+});
+</script>
+</head>
+<body>
+<h1>Utilice el documento "ejercicio-selectores.html" y, por medio del interface de la p√°gina, construye los selectores para seleccionar:</h1>
+<a href="https://www.w3schools.com/jquery/trysel.asp">W3SCHOOL</a>
+<p>1.Todos los elementos con la clase "rojo" asginada.   (.rojo)</p>
+<p>2.Todos los elementos de tipo "div".   (div)</p>
+<p>3.Todos los elementos con las clases "rojo" y "fondogris".   (.rojo .fondogris)</p>
+<p>4.El elemento con identificador "p3" y la clase "rojo".   (p3.rojo)</p>
+<p>5.El elemento con identificador "p3" y la clase "verde".   (p3.verde)</p>
+
+<h1>Selectores B&aacute;sicos</h1>
+<p>Introduce en la caja de texto la cadena correspondiente a los selectores solicitados en el ejercicio.</p>
+<p>Al Pulsar el bot&oacute;n &quot;Validar&quot; los elementos seleccionados con el selector parpadear&aacute;n, y ser&aacute;n mostrados por consola.</p>
+<form>
+Selector: $(&quot;<input type="text" id="selectorValidar">&quot;)
+<input type="button" id="btnValidar" value="Validar">
+</form>
+<div id="debug"></div>
+<hr />
+<div id="samplesContainer">
+	<p>Elemento sin identificador ni clase</p>
+
+	<p id="p1">Elemento con identificador p1 sin clase</p>
+	
+	<p id="p2" class="rojo" >Elemento con identificador p2 y clase &quot;rojo&quot;</p>
+
+	<p id="p3" class="verde" >Elemento con identificador p3 y clase &quot;verde&quot;</p>
+
+	<p id="p4" class="rojo fondogris" >Elemento con identificador p4 y clases &quot;rojo&quot; y &quot;fondogris&quot;</p>
+
+	<p class="fondogris" >Elemento sin identificador y clases &quot;fondogris&quot; con estilo <i>it&aacute;lica</i> y <strong>negrita</strong></p>
+
+	<div>Elemento sin identificador ni clase</div>
+
+	<div class="azul">Elemento sin identificador y con classe &quot;azul&quot;</div>
+
+	<div id="div1">Elemento con identificador &quot;div1&quot;</div>
+
+	<div id="div2" class="rojo" >Elemento con identificador &quot;div2&quot; y clase &quot;rojo&quot;</div>
+
+	<div id="div3" class="verde fondogris" >Elemento con identificador div3 y clases &quot;verde&quot; y &quot;fondogris&quot;</div>
+</div>
+</body></html>

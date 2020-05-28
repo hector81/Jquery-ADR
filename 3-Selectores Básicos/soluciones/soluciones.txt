@@ -1,0 +1,20 @@
+Ejercicio 1.
+Los selectores que se deberán indicar, para cada una de las peticiones, son:
+1.	.rojo
+2.	div
+3.	.rojo.fondogris
+4.	#p3.rojo
+5.	#p3.verde
+
+---------------------------------------------------------------------------------
+
+Ejercicio 2.
+Los selectores que se deberán indicar, para cada una de las peticiones, son:
+1.	div.bodyPreviewAlert, div.footPreviewAlert (el resultado contendrá 2 elementos)
+2.	div.bodyPreviewAlert.sbPreviewAlert (el resultado contendrá 1 elemento)
+3.	div#userMensajes a (el resultado contendrá 4 elementos)
+4.	div#userMensajes > .sbPreviewAlert (el resultado contendrá 3 elementos)
+5.	#userMensajes > .headPreviewAlert ~ .footPreviewAlert (el resultado contendrá 1 elemento)
+6.	div.notificacionesDisplay > li (el resultado contendrá 0 elementos)
+7.	ul.mensajesBox > li.messageContent (el resultado contendrá 2 elementos)
+8.	li.loadAlerts + li > a.readMore (el resultado contendrá 1 elemento)

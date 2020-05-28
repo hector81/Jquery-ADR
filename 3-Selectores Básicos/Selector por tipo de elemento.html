@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Selector por tipo de elemento</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(function(){
+		$("p") // elementos de tipo párrafo <p></p>
+		//mostrar por consola los elementos que componen la seleccion
+		console.log( $("p") );
+		$("h1") // elementos de tipo H1 <h1></h1>
+		//mostrar por consola los elementos que componen la seleccion
+		console.log( $("h1") );
+		$("div") // elementos input de formularios <input />
+		//mostrar por consola los elementos que componen la seleccion
+		console.log( $("div") );
+	});
+</script>
+</head>
+<body>
+	 <div id="header">
+	  <div id="site_title">
+		<h1><a href="#"><strong>ENCABEZADO</strong> DE NIVEL 1<span> DE LA PAGINA</span></a></h1>
+	  </div>
+	  <ul id="social_box">
+		<li class="social_item"><a href="#"><img src="img/facebook.png" alt="facebook"></a></li>
+		<li class="social_item"><a href="#"><img src="img/twitter.png" alt="twitter"></a></li>
+		<li class="social_item"><a href="#"><img src="img/linkedin.png" alt="linkin"></a></li>
+		<li class="social_item"><a href="#"><img src="img/technorati.png" alt="technorati"></a></li>
+	  </ul>
+	  <div class="cleaner"></div>
+	</div>
+</body>
+</html>

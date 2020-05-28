@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Selectores jerarquicos - Selector proximo hermano </title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(
+		//~
+		function(){
+		//mostrar por consola los elementos que componen la seleccion
+		console.log( $("h1 ~ h2") );
+	 
+	});
+</script>
+</head>
+<body>
+	    <div id="todo">
+		  <h1>Encabezado de primer nivel</h1>
+		  <h2>Primer Encabezado de segundo nivel</h2>
+		  <p>Contenido del documento</p>
+		  <p>Contenido del documento</p>
+		  <h2>Segundo Encabezado de segundo nivel</h2>
+		  <h3>Encabezado de primer nivel</h3>
+		  <p>Contenido del documento</p>
+		  <p>Contenido del documento</p>
+		</div>
+	
+</body>
+</html>

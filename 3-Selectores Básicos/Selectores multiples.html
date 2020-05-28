@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Combinacion de selector por identificador y de selector de clase</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(
+		function(){
+		  //mostrar por consola los elementos que componen la seleccion
+		  console.log( $("tr.principal, tr.final") );
+		 
+		});
+</script>
+</head>
+<body>
+	 <table>
+	 <tr class="impar principal">1</tr>
+	 <tr class="par">2</tr>
+	 <tr class="impar">1</tr>
+	 <tr class="par">2</tr>
+	 <tr class="impar final">1</tr>
+	 <tr class="par final">2</tr>
+	</table>
+	
+</body>
+</html>

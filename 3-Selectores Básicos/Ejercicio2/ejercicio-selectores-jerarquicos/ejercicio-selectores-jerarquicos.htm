@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ejercicio Selectores II</title>
+<style type="text/css">
+body{
+	font-family: verdana, arial, helvetica;
+}
+#samplesContainer .rojo{
+	color: #cc0000;
+}
+#samplesContainer .verde{
+	color: #00cc00;
+}
+#samplesContainer .azul{
+	color: #0000cc;
+}
+#samplesContainer .fondogris{
+	background-color: #cccccc;
+}
+
+#samplesContainer div:before{
+	content: "<DIV> ";
+	font-size: 10px;
+}
+#samplesContainer p:before{
+	content: "<P> ";
+	font-size: 10px;
+}
+#samplesContainer ul:before{
+	content: "<UL> ";
+	font-size: 10px;
+}
+#samplesContainer li:before{
+	content: "<LI> ";
+	font-size: 10px;
+}
+#samplesContainer a:before{
+	content: "<A> ";
+	font-size: 10px;
+}
+#preCodigoHTML{
+	background-color: #E2E2E2;
+	border: 1px solid #000;
+	max-width: 650px;
+	overflow-wrap: break-word;
+	padding: 10px;	
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#btnValidar").on("click", function(e){
+		e.preventDefault();
+		$("#debug").empty();
+		var cadSelector = $("#selectorValidar").val();
+		if (cadSelector=="" || cadSelector=="*"){
+			alert("Escribe un selector v·lido")
+		}else{
+			try{
+				$("#debug").append("<span>Intentando capturar el selector $('"+cadSelector+"')</span>");
+				$seleccion = $(cadSelector, $("#samplesContainer"));
+				console.log("----------------------------");
+				console.log($seleccion);
+				$seleccion.fadeOut("normal", function(){
+					$seleccion.fadeIn("normal", function(){
+						$seleccion.fadeOut("normal", function(){
+							$seleccion.fadeIn("normal");
+						});
+					});
+				});
+			}catch(e){
+				alert("Ha ocurrido un error al validar el selector. Verifica la cadena introducida.");
+			}
+		}
+	});
+});
+</script>
+</head>
+<body>
+
+<h1>Utiliza el documento "ejercicio-selectores-jerarquicos.htm" y, por medio del interface de la p√°gina, construye selectores para seleccionar:</h1>
+
+<ul>
+	<li>1.	Los elementos de tipo "div" que tienen asignadas la clase "bodyPreviewAlert" o la clase "footPreviewAlert".  <span style="color:red">(div.bodyPreviewAlert, div.footPreviewAlert)</span></li>
+	<li>2.	Los elementos de tipo "div" que tienen asignadas la clase "bodyPreviewAlert" y la clase "sbPreviewAl".  <span style="color:red">(div.bodyPreviewAlert.footPreviewAlert)</span></li>
+	<li>3.  Los elementos de tipo "a" descendientes del "div" con identificador "userMensajes".  <span style="color:red">(div #userMensajes a)</span></li>
+	<li>4.	Los elementos con clase "sbPreviewAlert" hijos del "div" con identificador "userMensajes". <span style="color:red">(div#userMensajes > .sbPreviewAlert)</span></li>
+	<li>5.	Los elementos con clase "footPreviewAlert", extendiendo el selector "#userMensajes >
+	.headPreviewAlert...." (reemplaza los puntos suspensivos por la parte del selector que falta).  <span style="color:red">(#userMensajes > .headPreviewAlert ~ .footPreviewAlert)</span></li>
+	<li>6.	Los elementos de tipo "li" hijos de elementos "div" con clase "notificacionesDisplay".  <span style="color:red">(div.notificacionesDisplay > li)</span></li>
+	<li>7.	Los elementos de tipo "li" con clase "messageContent" hijos de elementos "ul" con clase "mensajesBox".  <span style="color:red">(ul.mensajesBox > li.messageContent)</span></li>
+	<li>8.	Los elementos de tipo "a" con clase "readMore" hijos de un "li" que es el hermano siguiente de un "li" con la clase "messageContent".  <span style="color:red">(li.loadAlerts + li > a.readMore)</span></li>
+
+</ul>
+
+
+
+
+
+
+<h1>Selectores Jer&aacute;rquicos</h1>
+<p>Introduce en la caja de texto la cadena correspondiente a los selectores solicitados en el ejercicio.</p>
+<p>Al Pulsar el bot&oacute;n &quot;Validar&quot; los elementos seleccionados con el selector parpadear&aacute;n, y ser&aacute;n mostrados por consola.</p>
+<form>
+Selector: $(&quot;<input type="text" id="selectorValidar">&quot;)
+<input type="button" id="btnValidar" value="Validar">
+</form>
+<div id="debug"></div>
+<hr />
+<div id="samplesContainer">
+	<div id="userMensajes" class="previewAlert">
+	  <div class="headPreviewAlert sbPreviewAlert">
+		<div class="contentPreviewAlert"> <a class="close" id="mensajesClose" href="#">Cerrar</a>
+		  <div class="titPreviewAlert">Mensajes</div>
+		</div>
+	  </div>
+	  <div class="bodyPreviewAlert sbPreviewAlert">
+		<div class="contentPreviewAlert">
+		  <div class="notificacionesDisplay">
+			<ul class="mensajesBox">
+			  <li class="loadAlerts"></li>
+			  <li class="messageContent">Hola Juan, Te env&iacute;o el resumen ...<a class="readMore" href="#">Leer M&aacute;s</a></li>
+			  <li class="messageContent">Estimado Juan, Lamentablemente no podr&eacute; asistir ...<a class="readMore" href="#">Leer M&aacute;s</a></li>
+			</ul>
+		  </div>
+		</div>
+	  </div>
+	  <div class="footPreviewAlert sbPreviewAlert">
+		<div class="contentPreviewAlert"> <a href="#">Ver todos los mensajes</a> </div>
+	  </div>
+	</div>
+</div>
+<PRE id="preCodigoHTML">
+	&lt;div id=&quot;userMensajes&quot; class=&quot;previewAlert&quot;&gt;
+	  &lt;div class=&quot;headPreviewAlert sbPreviewAlert&quot;&gt;
+		&lt;div class=&quot;contentPreviewAlert&quot;&gt; &lt;a class=&quot;close&quot; id=&quot;mensajesClose&quot; href=&quot;#&quot;&gt;Cerrar&lt;/a&gt;
+		  &lt;div class=&quot;titPreviewAlert&quot;&gt;Mensajes&lt;/div&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+	  &lt;div class=&quot;bodyPreviewAlert sbPreviewAlert&quot;&gt;
+		&lt;div class=&quot;contentPreviewAlert&quot;&gt;
+		  &lt;div class=&quot;notificacionesDisplay&quot;&gt;
+			&lt;ul class=&quot;mensajesBox&quot;&gt;
+			  &lt;li class=&quot;loadAlerts&quot;&gt;&lt;/li&gt;
+			  &lt;li class=&quot;messageContent&quot;&gt;Hola Juan, Te env&iacute;o el resumen ...&lt;a class=&quot;readMore&quot; href=&quot;#&quot;&gt;Leer M&aacute;s&lt;/a&gt;&lt;/li&gt;
+			  &lt;li class=&quot;messageContent&quot;&gt;Estimado Juan, Lamentablemente no podr&eacute; asistir ...&lt;a class=&quot;readMore&quot; href=&quot;#&quot;&gt;Leer M&aacute;s&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		  &lt;/div&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+	  &lt;div class=&quot;footPreviewAlert sbPreviewAlert&quot;&gt;
+		&lt;div class=&quot;contentPreviewAlert&quot;&gt; &lt;a href=&quot;#&quot;&gt;Ver todos los mensajes&lt;/a&gt; &lt;/div&gt;
+	  &lt;/div&gt;
+
+</PRE>
+</body></html>
