@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo toggle</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+// jQuery
+$(document).ready(function(){ 
+ 
+    $('#alternar-panel-oculto').toggle( 
+ 
+        /* 
+            Primer click.
+            Función que descubre un panel oculto
+            y cambia el texto del botón.
+        */
+        function(e){ 
+            $('#panel-oculto').slideDown();
+            $(this).text('Cerrar el panel');
+            e.preventDefault();
+        }, // Separamos las dos funciones con una coma
+     
+        /* 
+            Segundo click.
+            Función que oculta el panel
+            y vuelve a cambiar el texto del botón.
+        */
+        function(e){ 
+            $('#panel-oculto').slideUp();
+            $(this).text('Mostrar el panel oculto');
+            e.preventDefault();
+        }
+ 
+    );
+ 
+});
+</script>
+
+</html>
+<style type="text/css">
+.amarillo {
+	background-color:yellow;
+}
+.rosa {
+	background-color:pink;
+}
+</style>
+</head>
+<body>
+	<div id="panel-oculto" style="display:none;"></div>
+ 
+	<a href="#" id="alternar-panel-oculto">Mostrar el panel oculto</a>
+</body>
+</html>

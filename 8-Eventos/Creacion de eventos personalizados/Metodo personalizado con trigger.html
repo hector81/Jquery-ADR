@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo personalizado con on</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$("#fichaPersona").on("cumplimentar", function(e, infoPersonal, imageSRC, contactEmail,contactTlf){
+	   $(".infoPersonal", $(this)).html(infoPersonal);
+	   if(imageSRC){
+		  $newImage=$("<img />").attr("src", imageSRC);
+		  $(".imageContainer", $(this)).append($newImage);
+	   }
+	 
+	   if(contactEmail){
+		  $newLinkEmail=$("<a />", {'href': 'mailto:'+contactEmail, 'target':'_blank'}).text("Email: "+contactEmail);
+		  $(".contactDetails", $(this)).append($newLinkEmail);
+	   }
+	 
+	   if(contactTlf){
+		  $newLinkCallTo=$("<a />", {'href': 'callto:'+contactTlf, 'target':'_blank'}).text("Tlf: "+contactTlf);
+		  $(".contactDetails", $(this)).append($newLinkCallTo);
+	   }
+	});
+	 $("#fichaRellenar1").on("click", function(e){
+	   $("#fichaPersona").trigger("cumplimentar", ["John Doe","http://lorempixel.com/180/220/people/Aprendiendo-jQuery/","sample@mail.com","555959595"]);
+	});
+
+ 
+})
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<div id="fichaPersona" id="fichaUsuario">
+	   <div class="infoPersonal"></div>
+	   <div class="imageContainer"></div>
+	   <div class="contactDetails"></div>
+	</div>
+	 
+	<input id="fichaRellenar1" value="Cumplimentar Ficha" />
+</body>
+</html>

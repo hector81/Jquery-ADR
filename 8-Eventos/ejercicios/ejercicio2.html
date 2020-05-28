@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ejercicio 2</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	 
+});
+
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<h1>Ejercicio 2</h1>
+	<p>Disponiendo de un formulario en HTML, utiliza los eventos del teclado de jQuery para evitar que se utilicen los atajosde teclado:
+	<br>Cortar - Ctrl + X <br>Copiar - Ctrl + C <br>Pegar - Ctrl + V<br>
+	Debes deshabilitar esta función en todos los campos que permitan la escritura por teclado. El HTML del formulario es el siguiente:</p>
+	
+	
+	<form id="formRegistro" name="formRegistro" method="post" action="#">
+   <p>Nombre&nbsp;<input name="nombre" id="nombre" type="text" /></p>
+   <p>Apellidos&nbsp;<input name="apellidos" id="apellidos" type="text" /></p>
+   <p>Email&nbsp;<input name="email" id="email" type="text" /></p>
+   <p>Direcci&oacute;n&nbsp;<input name="direccion" id="direccion" type="text" /></p>
+   <p>Calle&nbsp;<input name="calle" id="calle" type="text" /></p>
+   <p>N&uacute;mero&nbsp;<input name="numero" id="numero" type="text" /></p>
+   <p>Edad&nbsp;<input name="edad" id="edad" type="text" /></p>
+   <p>
+      Pa&iacute;s&nbsp;
+      <select name="pais" id="pais">
+         <option selected="selected" value="ES">Espa&ntilde;a</option>
+         <option value="FR">Francia</option>
+         <option value="GE">Alemania</option>
+         <option value="PT">Portugal</option>
+      </select>
+   </p>
+   <p>G&eacute;nero&nbsp;<label><input name="genero" id="genero_h" type="radio" value="Hombre" />&nbsp;Hombre</label>&nbsp;<label><input name="genero" type="radio" value="Mujer" />Mujer</label></p>
+   <p>Comentarios</p>
+   <p><textarea cols="60" name="comentarios" id="comentarios" rows="4"></textarea></p>
+   <p>Contrase&ntilde;a&nbsp; <input type="password" name="contrasena" id="contrasena" /></p>
+   <p>Repetir Contrase&ntilde;a <input type="password" name="repetir_contrasena" id="repetir_contrasena" /></p>
+</form>
+</body>
+</html>

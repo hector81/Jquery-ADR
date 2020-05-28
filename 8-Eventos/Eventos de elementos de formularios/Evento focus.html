@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Evento focus</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+//cuando el elemento capturado pierda el foco activo
+$(document).ready(function(){
+  $( "input" ).focus(function() {
+	  $( this ).next( "span" ).css( "display", "inline" ).fadeOut( 1000 );
+	});
+});
+</script>
+<style type="text/css">
+	span {
+		display: none;
+	  }
+</style>
+</head>
+<body>
+	<p><input type="text"> <span>focus fire</span></p>
+	<p><input type="password"> <span>focus fire</span></p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Captura de un evento con el metodo on</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	 $("a.sinParametro").on("click", (function(e){
+	  //acciones a realizar
+	  alert("Esto es un evento asociado al enlace");
+	}));
+	
+	//capturar eventos 
+	 $("a.sinParametro").on("mouseover mouseout", function(e){
+	  //acciones a realizar mouseover mouseout automaticamente
+	  console.log(e.type);
+	});
+	
+	//capturar eventos 
+	 $("a.conParametro").on("click", {extradata: "valor"},function(e){
+	  //acciones a realizar
+	  console.log(e.data.extradata);
+	});
+		
+});
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<a class="sinParametro" href="#">Pulsar enlace</a>
+	
+	<br><br><br>
+	
+	<a class="sinParametro" href="#">Pulsar enlace con mouse</a>
+	
+	<br><br><br>
+	
+	<a class="conParametro" href="#">Pulsar enlace con parametro adiccional</a>
+	
+	
+</body>
+</html>

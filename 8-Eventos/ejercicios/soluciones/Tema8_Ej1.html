@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Tema 8</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+		
+			//Añadimos el estilo de tab a todos los titulos
+			$("div#titulos > div").addClass("tab");
+		
+			//Al hacer click sobre un titulo eliminamos la clase de tituloSelected en todos los titulos y luesgo se lo añadimos al clickado
+			$("div#titulos > div").on("click", function(e) {
+				$("div#titulos > div").removeClass("tituloSelected");
+				$(this).addClass("tituloSelected");			
+			});
+			
+			//Al pasar el ratón por encima de cualquier título, le ponemos el estilo de Over y cambiamos el estilo del cursor
+			$("div#titulos > div").on("mouseover", function(e) {
+				$(this).addClass("tituloOver");
+				$(this).css("cursor", "pointer");
+			});
+
+			//Al sacar el ratón, eliminamos la clase Over
+			$("div#titulos > div").on("mouseout", function(e) {
+				$(this).removeClass("tituloOver");
+			});
+			
+			//Aplicamos a todos los contenidos el estilo de contenido seleccionado
+			$("div#contenidos > div").addClass("contenidoSelected");
+			
+			//Si pulsamos sobre el primer titulo, ocultamos los demás contenidos y mostramos éste
+			$("div#titulos > div:eq(0)").on("click", function(e) {
+				$("div#contenidos > div").css("display","none");
+				$("div#contenidos > div:eq(0)").css("display","");
+			});
+			
+			//Si pulsamos sobre el segundo titulo, ocultamos los demás contenidos y mostramos éste
+			$("div#titulos > div:eq(1)").on("click", function(e) {
+				$("div#contenidos > div").css("display","none");
+				$("div#contenidos > div:eq(1)").css("display","");
+			});
+			
+			//Si pulsamos sobre el tercer titulo, ocultamos los demás contenidos y mostramos éste
+			$("div#titulos > div:eq(2)").on("click", function(e) {
+				$("div#contenidos > div").css("display","none");
+				$("div#contenidos > div:eq(2)").css("display","");
+			});			
+			
+			
+		});
+
+	</script>
+	
+	<style>
+	
+		/* Estilo para formatear los títulos como si fuese pestañas */
+		.tab {
+			border: 2px solid #DADADA;
+			border-radius: 5px;
+			min-height: 19px;
+			margin: 0.5%;
+			padding: 0.5%;
+			width: 30%;
+			float: left;
+			text-align: center;
+		}
+	
+		/* Estilo de la pestaña seleccionada */ 
+		.tituloSelected {
+			color: #003333;
+			font: bold 14px/14px Georgia, "Times New Roman", Times, serif;
+			background-color: #669999;
+		}
+		
+		/* Estilo de la pestaña al pasar el ratón por encima */
+		.tituloOver {
+			color: #403075;
+			font: bold 14px/14px Georgia, "Times New Roman", Times, serif;
+
+		}
+		
+		/* Estilo del contenido */	
+		.contenidoSelected {
+			border: 1px solid #DADADA;
+			color: #888;
+			width: 100%;
+			font: bold 14px/14px Georgia, "Times New Roman", Times, serif;
+			float: left;
+		}
+	
+	</style>
+	
+</head>
+<body>
+
+<div id="tabs">
+   <div id="titulos">
+      <div class="tituloSelected">titulo A</div>
+      <div>titulo B</div>
+      <div>titulo C</div>
+   </div>
+   <div id="contenidos">
+      <div class="contenidoSelected">Contenido A</div>
+      <div style="display: none;">Contenido B</div>
+      <div style="display: none;">Contenido C</div>
+   </div>
+</div>
+
+</body>
+</html>

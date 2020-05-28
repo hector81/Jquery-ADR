@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo directos</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	var extraParam1 = "extraParam1";
+	var extraParam2 = "extraParam2";
+	
+	 //con  segundo parametro
+	 $("#btnCalcular").on('click', function(e, arg1, arg2){
+	   alert($(this).attr('id')); //mostrará la alerta "btnCalcular"
+	   alert(arg1); //mostrará la alerta "extraParam1"
+	   alert(arg2); //mostrará la alerta "extraParam2"
+	});
+	 
+	$("#btnCalcular").trigger('click', [extraParam1,extraParam2]);
+})
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<h1>2 + 2 </h1>
+	<button id="btnCalcular" onclick="">Calcular</button>
+	<p id="demo"></p>
+</body>
+</html>

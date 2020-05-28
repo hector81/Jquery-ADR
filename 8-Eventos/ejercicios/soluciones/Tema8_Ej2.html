@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Tema 8</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#formRegistro input, #formRegistro textarea").on("keydown", function(e) {
+				console.log("Tecla: " + e.which + ", Ctrl: " + e.ctrlKey);
+				var letra_x = 88;
+				var letra_c = 67;
+				var letra_v = 86;
+				
+				if ( e.ctrlKey ) {
+					if ( e.which == letra_x || e.which == letra_c || e.which == letra_v) {
+						e.preventDefault();
+					}
+				}
+			
+			});
+			
+		});
+
+	</script>
+	
+</head>
+<body>
+
+<form id="formRegistro" name="formRegistro" method="post" action="#">
+   <p>Nombre&nbsp;<input name="nombre" id="nombre" type="text" /></p>
+   <p>Apellidos&nbsp;<input name="apellidos" id="apellidos" type="text" /></p>
+   <p>Email&nbsp;<input name="email" id="email" type="text" /></p>
+   <p>Direcci&oacute;n&nbsp;<input name="direccion" id="direccion" type="text" /></p>
+   <p>Calle&nbsp;<input name="calle" id="calle" type="text" /></p>
+   <p>N&uacute;mero&nbsp;<input name="numero" id="numero" type="text" /></p>
+   <p>Edad&nbsp;<input name="edad" id="edad" type="text" /></p>
+   <p>
+      Pa&iacute;s&nbsp;
+      <select name="pais" id="pais">
+         <option selected="selected" value="ES">Espa&ntilde;a</option>
+         <option value="FR">Francia</option>
+         <option value="GE">Alemania</option>
+         <option value="PT">Portugal</option>
+      </select>
+   </p>
+   <p>G&eacute;nero&nbsp;<label><input name="genero" id="genero_h" type="radio" value="Hombre" />&nbsp;Hombre</label>&nbsp;<label><input name="genero" type="radio" value="Mujer" />Mujer</label></p>
+   <p>Comentarios</p>
+   <p><textarea cols="60" name="comentarios" id="comentarios" rows="4"></textarea></p>
+   <p>Contrase&ntilde;a&nbsp; <input type="password" name="contrasena" id="contrasena" /></p>
+   <p>Repetir Contrase&ntilde;a <input type="password" name="repetir_contrasena" id="repetir_contrasena" /></p>
+</form>
+
+</body>
+</html>

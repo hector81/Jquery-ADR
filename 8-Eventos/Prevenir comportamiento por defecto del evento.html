@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Prevenir comportamiento por defecto del evento</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+//1-metodo
+	  $("a").on("click", (function(e){
+		  //desactivar funcionalidad por defecto del evento
+		  e.preventDefault();
+		  
+		  //realizar las acciones deseadas en el evento
+		  alert("Pulsado enlace");
+		}));
+//2-metodo	
+	//devolviendo false en la funcion controladora
+	$("a").on("click", (function(e){
+	  //realizar las acciones deseadas en el evento
+	  //desactivar funcionalidad por defecto del evento
+	  return false;
+	}));
+	 
+});
+
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<a href="#">Pulsar enlace</a></a>
+</body>
+</html>

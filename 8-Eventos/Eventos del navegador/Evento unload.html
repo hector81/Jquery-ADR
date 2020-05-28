@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Evento change</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(window).unload(function(){
+    alert("El usuario ha abandonado la pagina porque da atras o adelante, pulsa otros enlaces, cierra la ventana o escriba otra direccion en la barra del navegador");
+  });
+});
+</script>
+<style type="text/css">
+.amarillo {
+	background-color:yellow;
+}
+.rosa {
+	background-color:pink;
+}
+</style>
+</head>
+<body>
+	<p>When you click <a href="https://w3schools.com">this link</a>, or close the window, an alert box will be triggered.</p>
+
+	
+</body>
+</html>

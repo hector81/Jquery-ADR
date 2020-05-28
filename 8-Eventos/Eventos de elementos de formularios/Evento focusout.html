@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Evento focusout</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("div").focusin(function(){//cuando el elemento o sus herederos obtienen el foco
+    $(this).css("background-color", "#FFFFCC");
+  });
+  $("div").focusout(function(){//cuando el elemento o sus herederos pierdan el foco
+    $(this).css("background-color", "#FFFFFF");
+  });
+});
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<div style="border: 1px solid black;padding:10px;">
+	  First name: <input type="text"><br>
+	  Last name: <input type="text">
+	</div>
+
+	<p>Click an input field to get focus. Click outside an input field to lose focus.</p>
+</body>
+</html>

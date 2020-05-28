@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Evento blur</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("input").blur(function(){
+    alert("La caja del input ha perdido el foco");
+  });
+});
+</script>
+<style type="text/css">
+.amarillo {
+	background-color:yellow;
+}
+.rosa {
+	background-color:pink;
+}
+</style>
+</head>
+<body>
+	Enter your name: <input type="text">
+	<p>Write something in the input field, and then click outside the field to lose focus (blur).</p>
+
+	
+</body>
+</html>
