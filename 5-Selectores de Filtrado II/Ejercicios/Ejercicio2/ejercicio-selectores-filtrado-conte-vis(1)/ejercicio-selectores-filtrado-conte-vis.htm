@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ejercicio Selectores Filtrado Contenido - Visibilidad</title>
+<style type="text/css">
+body{
+	font-family: verdana, arial, helvetica;
+}
+#samplesContainer .rojo{
+	color: #cc0000;
+}
+#samplesContainer .verde{
+	color: #00cc00;
+}
+#samplesContainer .azul{
+	color: #0000cc;
+}
+#samplesContainer .fondogris{
+	background-color: #cccccc;
+}
+
+#samplesContainer div:before{
+	content: "<DIV> ";
+	font-size: 10px;
+}
+#samplesContainer p:before{
+	content: "<P> ";
+	font-size: 10px;
+}
+#samplesContainer ul:before{
+	content: "<UL> ";
+	font-size: 10px;
+}
+#samplesContainer li:before{
+	content: "<LI> ";
+	font-size: 10px;
+}
+#samplesContainer a:before{
+	content: "<A> ";
+	font-size: 10px;
+}
+#preCodigoHTML{
+	background-color: #E2E2E2;
+	border: 1px solid #000;
+	max-width: 650px;
+	overflow-wrap: break-word;
+	padding: 10px;	
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#btnValidar").on("click", function(e){
+		e.preventDefault();
+		$("#debug").empty();
+		var cadSelector = $("#selectorValidar").val();
+		if (cadSelector=="" || cadSelector=="*"){
+			alert("Escribe un selector valido")
+		}else{
+			try{
+				$("#debug").append("<span>Intentando capturar el selector $(\""+cadSelector+"\")</span>");
+				$seleccion = $(cadSelector, $("#samplesContainer"));
+				console.log("----------------------------");
+				console.log($seleccion);
+				$seleccion.fadeOut("normal", function(){
+					$seleccion.fadeIn("normal", function(){
+						$seleccion.fadeOut("normal", function(){
+							$seleccion.fadeIn("normal");
+						});
+					});
+				});
+			}catch(e){
+				alert("Ha ocurrido un error al validar el selector. Verifica la cadena introducida.");
+			}
+		}
+	});
+});
+</script>
+</head>
+<body>
+<h1>Selectores de Filtrado Jer&aacute;rquico</h1>
+
+<h1>Ejercicio 2</h1>
+
+<p>Utiliza el documento "ejercicio-selectores-filtrado-conte-vis.htm" y, por medio del interface de la página, construye los selectores utilizando selectores de filtrado jerárquico, para seleccionar:</p>
+<p>1. Selecciona los elementos del DOM que no contengan ningún elemento hijo ni ningún texto <span style="color:red">div *:empty</span></p>
+<p>2. Selecciona los elementos del DOM correspondientes a mensajes con el texto "resumen" <span style="color:red">.messageContent:contains('resumen')</span></p>
+<p>3. Selecciona los elementos del DOM que contienen un elemento de tipo "a" cuyo atributo "alt" tenga el prefijo "message" <span style="color:red">a:has([alt='message'])</span></p>
+<p>4. Selecciona los elementos del DOM de tipo "li" que contienen un elemento de tipo "a" cuyo atributo "alt" tenga el prefijo "message" <span style="color:red">li a:has([alt='message'])</span></p>
+<p>5. Selecciona los elementos del DOM que no son visibles (solamente aparecerán por consola) <span style="color:red">div:hidden</span></p>
+<br><br>
+
+<p>Introduce en la caja de texto la cadena correspondiente a los selectores solicitados en el ejercicio.</p>
+<p>Al Pulsar el bot&oacute;n &quot;Validar&quot; los elementos seleccionados con el selector parpadear&aacute;n, y ser&aacute;n mostrados por consola.</p>
+<form>
+Selector: $(&quot;<input type="text" id="selectorValidar">&quot;)
+<input type="button" id="btnValidar" value="Validar">
+</form>
+<div id="debug"></div>
+<hr />
+<div id="samplesContainer">
+	<div id="userMensajes" class="previewAlert" data-unreadcount="2">
+	  <div class="headPreviewAlert sbPreviewAlert">
+		<div class="contentPreviewAlert"> <a class="close" id="mensajesClose" href="#">Cerrar</a>
+		  <div class="titPreviewAlert">Mensajes</div>
+		</div>
+	  </div>
+	  <div class="bodyPreviewAlert sbPreviewAlert">
+		<div class="contentPreviewAlert">
+		  <div class="notificacionesDisplay">
+			<ol class="mensajesBox">
+			  <li class="loadAlerts" style="display: none;"></li>
+			  <li class="messageContent" data-unread="0" data-sender="Miguel Oca" data-userimage="http://lorempixel.com/output/people-q-g-90-90-1.jpg" data-messagedate="2014-01-01 00:03:47" data-via="Web">Feliz A&ntilde;o Nuevo!!! ...<a class="readMore" href="#readMessage&amp;messageId=10005" lang="es" alt="message-10005">Leer M&aacute;s</a></li>
+			  <li class="messageContent" data-unread="1" data-sender="Marian Sevilla" data-messagedate="2014-01-10 13:05:22"  data-via="Mobile">Hola Juan, Te env&iacute;o el resumen ...<a class="readMore" href="#readMessage&amp;messageId=10785" lang="es" alt="message-10785">Leer M&aacute;s</a></li>
+			  <li class="messageContent" data-unread="1" data-sender="Joel Myers" data-userimage="http://lorempixel.com/output/people-q-g-90-90-3.jpg" data-messagedate="2014-02-14 19:54:07">Dear Juan, Unfortunatelly I will not be able to ...<a class="readMore" href="#readMessage&amp;messageId=13785" lang="en" alt="message-13785">Leer M&aacute;s</a></li>
+			</ol>
+		  </div>
+		  
+		</div>
+	  </div>
+	  <div class="footPreviewAlert sbPreviewAlert">
+		<div class="contentPreviewAlert"> <a href="#read-all.html" data-referrer="userMensajesBox">Ver todos los mensajes</a> </div>
+	  </div>
+	</div>
+	<div class="friendsList">
+		<h2>Tus Amigos</h2>
+		<ul id="yourFriends">
+			<li><a href="#friend-profile&profileId=47820" data-relation="family" data-lastupdate="2014-03-18 23:21:07" data-signedon="true" data-status="Aprendiendo algo nuevo">Ana</a></li>
+			<li><a href="#friend-profile&profileId=20879" data-relation="friend" data-lastupdate="2014-03-10 16:07:59" data-signedon="false" data-status="Una samana para las vacaciones">Marian</a></li>
+			<li><a href="#friend-profile&profileId=47700" data-relation="family" data-lastupdate="2014-03-18 20:45:00" data-signedon="false" data-status="Comiendo" >Miguel</a></li>
+			<li><a href="#friend-profile&profileId=84781" data-relation="friend" data-lastupdate="2014-03-18 23:11:50" data-signedon="true" data-status="En las Nubes">Silvia</a></li>
+			<li><a href="#friend-profile&profileId=54813" data-relstatus="pending">Ram&oacute;n</a></li>
+		</ul>
+		<h3>Solicitudes de Amistad</h3>
+		<ul id="friendshipRequests">
+			<li><a href="#user-profile&profileId=27885" data-requestdate="2014-03-17 10:58:39">Isabel Rivas</a></li>
+		</ul>
+	</div>
+	
+</div>
+<PRE id="preCodigoHTML">
+	&lt;div id=&quot;userMensajes&quot; class=&quot;previewAlert&quot; data-unreadcount=&quot;2&quot;&gt;
+	  &lt;div class=&quot;headPreviewAlert sbPreviewAlert&quot;&gt;
+		&lt;div class=&quot;contentPreviewAlert&quot;&gt; &lt;a class=&quot;close&quot; id=&quot;mensajesClose&quot; href=&quot;#&quot;&gt;Cerrar&lt;/a&gt;
+		  &lt;div class=&quot;titPreviewAlert&quot;&gt;Mensajes&lt;/div&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+	  &lt;div class=&quot;bodyPreviewAlert sbPreviewAlert&quot;&gt;
+		&lt;div class=&quot;contentPreviewAlert&quot;&gt;
+		  &lt;div class=&quot;notificacionesDisplay&quot;&gt;
+			&lt;ol class=&quot;mensajesBox&quot;&gt;
+			  &lt;li class=&quot;loadAlerts&quot; style=&quot;display: none;&quot;&gt;&lt;/li&gt;
+			  
+			  &lt;li class=&quot;messageContent&quot; data-unread=&quot;0&quot; data-sender=&quot;Miguel Oca&quot; data-userimage=&quot;http://lorempixel.com/output/people-q-g-90-90-1.jpg&quot; data-messagedate=&quot;2014-01-01 00:03:47&quot; data-via=&quot;Web&quot;&gt;Feliz A&ntilde;o Nuevo!!! ...&lt;a class=&quot;readMore&quot; href=&quot;#readMessage&amp;messageId=10005&quot; lang=&quot;es&quot; alt=&quot;message-10005&quot;&gt;Leer M&aacute;s&lt;/a&gt;&lt;/li&gt;
+			  &lt;li class=&quot;messageContent&quot; data-unread=&quot;1&quot; data-sender=&quot;Marian Sevilla&quot; data-messagedate=&quot;2014-01-10 13:05:22&quot;  data-via=&quot;Mobile&quot;&gt;Hola Juan, Te env&iacute;o el resumen ...&lt;a class=&quot;readMore&quot; href=&quot;#readMessage&amp;messageId=10785&quot; lang=&quot;es&quot; alt=&quot;message-10785&quot;&gt;Leer M&aacute;s&lt;/a&gt;&lt;/li&gt;
+			  &lt;li class=&quot;messageContent&quot; data-unread=&quot;1&quot; data-sender=&quot;Joel Myers&quot; data-userimage=&quot;http://lorempixel.com/output/people-q-g-90-90-3.jpg&quot; data-messagedate=&quot;2014-02-14 19:54:07&quot;&gt;Dear Juan, Unfortunatelly I will not be able to ...&lt;a class=&quot;readMore&quot; href=&quot;#readMessage&amp;messageId=13785&quot; lang=&quot;en&quot; alt=&quot;message-13785&quot;&gt;Leer M&aacute;s&lt;/a&gt;&lt;/li&gt;
+			&lt;/ol&gt;
+		  &lt;/div&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+	  &lt;div class=&quot;footPreviewAlert sbPreviewAlert&quot;&gt;
+		&lt;div class=&quot;contentPreviewAlert&quot;&gt; &lt;a href=&quot;#read-all.html&quot; data-referrer=&quot;userMensajesBox&quot;&gt;Ver todos los mensajes&lt;/a&gt; &lt;/div&gt;
+	  &lt;/div&gt;
+	&lt;div class=&quot;friendsList&quot;&gt;
+		&lt;h2&gt;Tus Amigos&lt;/h2&gt;
+		&lt;ul id=&quot;yourFriends&quot;&gt;
+			&lt;li&gt;&lt;a href=&quot;#friend-profile&profileId=47820&quot; data-relation=&quot;family&quot; data-lastupdate=&quot;2014-03-18 23:21:07&quot; data-signedon=&quot;true&quot; data-status=&quot;Aprendiendo algo nuevo&quot;&gt;Ana&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#friend-profile&profileId=20879&quot; data-relation=&quot;friend&quot; data-lastupdate=&quot;2014-03-10 16:07:59&quot; data-signedon=&quot;false&quot; data-status=&quot;Una samana para las vacaciones&quot;&gt;Marian&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#friend-profile&profileId=47700&quot; data-relation=&quot;family&quot; data-lastupdate=&quot;2014-03-18 20:45:00&quot; data-signedon=&quot;false&quot; data-status=&quot;Comiendo&quot; &gt;Miguel&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#friend-profile&profileId=84781&quot; data-relation=&quot;friend&quot; data-lastupdate=&quot;2014-03-18 23:11:50&quot; data-signedon=&quot;true&quot; data-status=&quot;En las Nubes&quot;&gt;Silvia&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;#friend-profile&profileId=54813&quot; data-relstatus=&quot;pending&quot;&gt;Ram&oacute;n&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+		&lt;h3&gt;Solicitudes de Amistad&lt;/h3&gt;
+		&lt;ul id=&quot;friendshipRequests&quot;&gt;
+			&lt;li&gt;&lt;a href=&quot;#user-profile&profileId=27885&quot; data-requestdate=&quot;2014-03-17 10:58:39&quot;&gt;Isabel Rivas&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+</PRE>
+</body></html>

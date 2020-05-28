@@ -1,0 +1,21 @@
+ol.mensajesBox > li:first
+ol:only-child
+div.friendsList > ul:first-of-type
+div#userMensajes >div:last
+div.friendsList > :only-of-type
+
+***********************************
+
+:empty
+.messageContent:contains(resumen)
+:has(a[alt|=message])
+li:has(a[alt|=message])
+:hidden
+
+***********************************
+
+div#orderDetails :checkbox:checked
+:disabled
+input[name=paymethod]:checked
+div#addrInfo input:text
+input:button

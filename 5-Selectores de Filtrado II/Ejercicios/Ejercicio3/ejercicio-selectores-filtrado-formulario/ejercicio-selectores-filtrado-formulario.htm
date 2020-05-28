@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ejercicio Selectores Filtrado Formulario</title>
+<style type="text/css">
+body{
+	font-family: verdana, arial, helvetica;
+}
+#samplesContainer .rojo{
+	color: #cc0000;
+}
+#samplesContainer .verde{
+	color: #00cc00;
+}
+#samplesContainer .azul{
+	color: #0000cc;
+}
+#samplesContainer .fondogris{
+	background-color: #cccccc;
+}
+
+#samplesContainer div:before{
+	content: "<DIV> ";
+	font-size: 10px;
+}
+#samplesContainer p:before{
+	content: "<P> ";
+	font-size: 10px;
+}
+#samplesContainer ul:before{
+	content: "<UL> ";
+	font-size: 10px;
+}
+#samplesContainer li:before{
+	content: "<LI> ";
+	font-size: 10px;
+}
+#samplesContainer a:before{
+	content: "<A> ";
+	font-size: 10px;
+}
+#preCodigoHTML{
+	background-color: #E2E2E2;
+	border: 1px solid #000;
+	max-width: 650px;
+	overflow-wrap: break-word;
+	padding: 10px;	
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#btnValidar").on("click", function(e){
+		e.preventDefault();
+		$("#debug").empty();
+		var cadSelector = $("#selectorValidar").val();
+		if (cadSelector=="" || cadSelector=="*"){
+			alert("Escribe un selector valido")
+		}else{
+			try{
+				$("#debug").append("<span>Intentando capturar el selector $(\""+cadSelector+"\")</span>");
+				$seleccion = $(cadSelector, $("#samplesContainer"));
+				console.log("----------------------------");
+				console.log($seleccion);
+				$seleccion.fadeOut("normal", function(){
+					$seleccion.fadeIn("normal", function(){
+						$seleccion.fadeOut("normal", function(){
+							$seleccion.fadeIn("normal");
+						});
+					});
+				});
+			}catch(e){
+				alert("Ha ocurrido un error al validar el selector. Verifica la cadena introducida.");
+			}
+		}
+	});
+});
+</script>
+</head>
+<body>
+<h1>Selectores de Filtrado por Elementos de Formulario</h1>
+
+<h1>Ejercicio 3</h1>
+
+Utiliza el documento "ejercicio-selectores-filtrado-formulario.htm" y, por medio del interface de la página, construye los selectores utilizando selectores de filtrado jerárquico, para seleccionar:</p>
+<p>1. Selecciona los elementos de formulario descendientes del "div" con identificador "orderDetails", de tipo "checkbox" y que estén marcados.<span style="color:red">div#orderDetails input:checked</span></p> 
+<p>2. Selecciona todos los elementos deshabilitados <span style="color:red">input:disabled</span></p>
+<p>3. Selecciona el elemento indicativo del modo de pago seleccionado <span style="color:red">input:selected</span></p>
+<p>4. Selecciona los elementos de formulario de tipo "text" del div con identificador "addrInfo" <span style="color:red">div#addrInfo input:text</span></p>
+<p>5. Selecciona los elementos de formulario de tipo "button" <span style="color:red">input:button</span></p>
+
+
+<br><br><br>
+
+
+
+
+
+<p>Introduce en la caja de texto la cadena correspondiente a los selectores solicitados en el ejercicio.</p>
+<p>Al Pulsar el bot&oacute;n &quot;Validar&quot; los elementos seleccionados con el selector parpadear&aacute;n, y ser&aacute;n mostrados por consola.</p>
+<form>
+Selector: $(&quot;<input type="text" id="selectorValidar">&quot;)
+<input type="button" id="btnValidar" value="Validar">
+</form>
+<div id="debug"></div>
+<hr />
+<div id="samplesContainer">
+      <form id="frmOrder" action="#" method="post">
+        <h3>Casa Pizza -- Formulario de pedido online</h3>
+		<div id="addrInfo">
+			<p><label>Direcci&oacute;n: <input name="address" id="address" type="text" /></label></p> 
+			<p><label>N&ordm; Tlf.: <input name="phone" id="phone" type="text" ></label></p>
+		</div>
+		<div id="orderDetails">
+        <p>Selecciona los ingredientes</p>
+        <ol>
+          <li><label><input type="checkbox" name="ingredientes" value="Pimiento" checked> Pimiento</label></li>
+          <li><label><input type="checkbox" name="ingredientes" value="Bacon" checked> Bacon</label></li>
+          <li><label><input type="checkbox" name="ingredientes" value="Anchoas"> Anchoas</label></li>
+          <li><label><input type="checkbox" name="ingredientes" value="Pollo"> Pollo</label></li>
+          <li><label><input type="checkbox" name="ingredientes" value="Ternera"> Ternera</label></li>
+          <li><label><input type="checkbox" name="ingredientes" value="Tomate" checked> Tomate</label></li>
+          <li><label><input type="checkbox" name="ingredientes" value="Cebolla" checked> Cebolla</label></li>
+          <li><label><input type="checkbox" name="ingredientes" value="Aceitunas" disabled="disabled"> Aceitunas</label> <i>(Sin Existencias)</i></li>
+        </ol>
+		</div>
+		<div id="paymentDetails">
+		<p>Selecciona una forma de pago:</p> 
+        <ol>
+          <li><label><input type="radio" checked value="cash" name="paymethod"> Cash</label></li>
+          <li><label><input type="radio" value="check" name="paymethod"> Check</label></li>
+          <li><i>Credit card:</i> 
+            <ul>
+              <li><label><input type="radio" value="mastercard" name="paymethod"> Mastercard</label></li>
+              <li><label><input type="radio" value="visa" name="paymethod"> Visa</label></li>
+            </ul>
+              <li><label><input type="radio" value="americanexpress" name="paymethod" disabled="disabled"> American Express</label> <i>(M&eacute;todo no disponible)</i</li>
+          </li>
+        </ol>
+		</div>
+		<div id="utils">
+        <p>A&ntilde;adir pedido a Favoritos</p>
+        <dl>
+          <dd>
+			<label><input type="radio" checked value="yes" name="favourite"> <i>S&iacute;</i></label>
+          </dd>
+          <dd>
+			<label><input type="radio" value="no" name="favourite"><i>No</i></label>
+          </dd>			 
+        </dl>
+		</div>
+		<p>Para confirmar el pedido, pulsa este bot&oacute;n:</p>
+        <input type="button" id="btnOrder" value="Order Pizza">
+      </form>
+</div>
+<PRE id="preCodigoHTML">
+      &lt;form id=&quot;frmOrder&quot; action=&quot;#&quot; method=&quot;post&quot;&gt;
+        &lt;h3&gt;Casa Pizza -- Formulario de pedido online&lt;/h3&gt;
+		&lt;div id=&quot;addrInfo&quot;&gt;
+        &lt;p&gt;&lt;label&gt;Direcci&oacute;n: &lt;input name=&quot;address&quot; id=&quot;address&quot; type=&quot;text&quot; /&gt;&lt;/label&gt;&lt;/p&gt; 
+        &lt;p&gt;&lt;label&gt;N&ordm; Tlf.: &lt;input name=&quot;phone&quot; id=&quot;phone&quot; type=&quot;text&quot; &gt;&lt;/label&gt;&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div id=&quot;orderDetails&quot;&gt;
+        &lt;p&gt;Selecciona los ingredientes&lt;/p&gt;
+        &lt;ol&gt;
+          &lt;li&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;ingredientes&quot; value=&quot;Pimiento&quot; checked&gt; Pimiento&lt;/label&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;ingredientes&quot; value=&quot;Bacon&quot checked;&gt; Bacon&lt;/label&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;ingredientes&quot; value=&quot;Anchoas&quot;&gt; Anchoas&lt;/label&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;ingredientes&quot; value=&quot;Pollo&quot;&gt; Pollo&lt;/label&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;ingredientes&quot; value=&quot;Ternera&quot;&gt; Ternera&lt;/label&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;ingredientes&quot; value=&quot;Tomate&quot; checked&gt; Tomate&lt;/label&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;ingredientes&quot; value=&quot;Cebolla&quot; checked&gt; Cebolla&lt;/label&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;ingredientes&quot; value=&quot;Aceitunas&quot; disabled=&quot;disabled&quot;&gt; Aceitunas&lt;/label&gt; &lt;i&gt;(Sin Existencias)&lt;/i&gt;&lt;/li&gt;
+        &lt;/ol&gt;
+		&lt;/div&gt;
+		&lt;div id=&quot;paymentDetails&quot;&gt;
+		&lt;p&gt;Selecciona una forma de pago:&lt;/p&gt; 
+        &lt;ol&gt;
+          &lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; checked value=&quot;cash&quot; name=&quot;paymethod&quot;&gt; Cash&lt;/label&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; value=&quot;check&quot; name=&quot;paymethod&quot;&gt; Check&lt;/label&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;i&gt;Credit card:&lt;/i&gt; 
+            &lt;ul&gt;
+              &lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; value=&quot;mastercard&quot; name=&quot;paymethod&quot;&gt; Mastercard&lt;/label&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; value=&quot;visa&quot; name=&quot;paymethod&quot;&gt; Visa&lt;/label&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+              &lt;li&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; value=&quot;americanexpress&quot; name=&quot;paymethod&quot; disabled=&quot;disabled&quot;&gt; American Express&lt;/label&gt; &lt;i&gt;(M&eacute;todo no disponible)&lt;/i&lt;/li&gt;
+          &lt;/li&gt;
+        &lt;/ol&gt;
+		&lt;/div&gt;
+		&lt;div id=&quot;utils&quot;&gt;
+        &lt;p&gt;A&ntilde;adir pedido a Favoritos&lt;/p&gt;
+        &lt;dl&gt;
+          &lt;dd&gt;
+			&lt;label&gt;&lt;input type=&quot;radio&quot; checked value=&quot;yes&quot; name=&quot;favourite&quot;&gt; &lt;i&gt;S&iacute;&lt;/i&gt;&lt;/label&gt;
+          &lt;/dd&gt;
+          &lt;dd&gt;
+			&lt;label&gt;&lt;input type=&quot;radio&quot; value=&quot;no&quot; name=&quot;favourite&quot;&gt;&lt;i&gt;No&lt;/i&gt;&lt;/label&gt;
+          &lt;/dd&gt;			 
+        &lt;/dl&gt;
+		&lt;/div&gt;
+		&lt;p&gt;Para confirmar el pedido, pulsa este bot&oacute;n:&lt;/p&gt;
+        &lt;input type=&quot;button&quot; id=&quot;btnOrder&quot; value=&quot;Order Pizza&quot;&gt;
+      &lt;/form&gt;
+</PRE>
+</body></html>

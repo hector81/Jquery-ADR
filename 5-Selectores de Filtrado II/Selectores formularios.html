@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Selectores formularios</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(function(){   
+		//mostrar por consola los elementos que componen la seleccion   
+		console.log(  $("input:text") ); 
+		//console.log(  $("input[type='text']") );//su equivalente
+		console.log(  $("input:button") ); 
+		//console.log(  $("input[type='button']") );//su equivalente
+		console.log(  $("input:checkbox") ); 
+		//console.log(  $("input[type='checkbox']") );//su equivalente
+		console.log(  $("input:file") ); 
+		//console.log(  $("input[type='file']") );//su equivalente
+		console.log(  $("input:image") ); 
+		//console.log(  $("input[type='image']") );//su equivalente
+		console.log(  $("input:password") ); 
+		//console.log(  $("input[type='password']") );//su equivalente
+		console.log(  $("input:radio") ); 
+		//console.log(  $("input[type='radio']") );//su equivalente
+		console.log(  $("input:reset") ); 
+		//console.log(  $("input[type='reset']") );//su equivalente
+		console.log(  $("input:submit") ); 
+		//console.log(  $("input[type='submit']") );//su equivalente
+		//console.log(  $("input:name") ); 
+		console.log(  $("input[name='firstname']") );//su equivalente		
+		 
+	});
+</script>
+<style type="text/css">
+	
+</style>
+</head>
+<body>
+	<form action="#">
+		Primer:<br>
+		<input type="text" name="firstname">
+		<br>
+		Apellidos<br>
+		<input type="text" name="lastname">
+		<br><br>
+		<input type="button">
+		<br><br>
+		<input type="checkbox">
+		<br><br>
+		<input type="color">
+		<br><br>
+		<input type="date">
+		<br><br>
+		<input type="datetime-local">
+		<br><br>
+		<input type="email">
+		<br><br>
+		<input type="file">
+		<br><br>
+		<input type="hidden">
+		<br><br>
+		<input type="image">
+		<br><br>
+		<input type="month">
+		<br><br>
+		<input type="number">
+		<br><br>
+		<input type="password">
+		<br><br>
+		<input type="radio">
+		<br><br>
+		<input type="range">
+		<br><br>
+		<input type="reset">
+		<br><br>
+		<input type="search">
+		<br><br>	
+		<input type="tel">
+		<br><br>
+		<input type="text">
+		<br><br>
+		<input type="time">
+		<br><br>
+		<input type="url">
+		<br><br>
+		<input type="week">
+		<br><br>
+
+		<input type="submit">
+		<br><br>
+	</form>
+</body>
+</html>

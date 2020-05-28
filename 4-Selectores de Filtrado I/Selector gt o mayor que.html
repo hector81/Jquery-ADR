@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Selector gt o mayor que</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(function(){
+		
+		//mostrar por consola los elementos que componen la seleccion
+		  console.log( $("a:gt(5)") );//busca a partir del sexto enlace dentro del DOM, en este caso a partir del enlace de twitter (sin incluir este)
+		  $("a:gt(5)").css('outline','#FF0000 solid');//le asigna un css
+	 
+	});
+</script>
+</head>
+<body>
+	<div id="header">
+		<div id="site_title">
+			<h1><a href="#"><strong>GLOSSY</strong> BOX<span>YOUR TAGLINE GOES HERE</span></a></h1>
+		</div>
+			<ul id="lang_links">
+				<li><a href="#" lang="es" dir="ltr">ES</a></li>
+				<li><a href="#" lang="en" dir="ltr">EN</a></li>
+				<li><a href="#" lang="fr" dir="rtl">FR</a></li>
+			</ul>
+			<ul id="social_box">
+				<li><a href="#" title="Publicar en Facebook"><img src="img/facebook.png" alt="publicar-facebook"></a></li>
+				<li><a href="#" title="Publicar en Twitter"><img src="img/twitter.png" alt="publicar-twitter"></a></li>
+				<li><a href="#" title="Publicar en LinkedIn"><img src="img/linkedin.png" alt="publicar"></a></li>
+				<li><a href="#" title="En Technorati"><img src="img/technorati.png" alt="technorati"></a></li>
+			</ul>
+		<div class="cleaner"></div>
+	</div>
+	<div id="menu">
+		<ul>
+			<li><a href="#" class="current" accesskey="h" title="Home">Home</a></li>
+			<li><a href="#services.html" accesskey="s" title="Services">Services</a></li>
+			<li><a href="#partners.html" accesskey="p" title="Partners">Partners</a></li>
+			<li><a href="#about.html" accesskey="a" title="About us">About us</a></li>
+			<li><a href="#contact.html" accesskey="c" title="Contact">Contact</a></li>
+		</ul>
+	</div>
+</body>
+</html>
