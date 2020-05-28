@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin titulo</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<style>
+body {
+    font-family:Arial;
+}
+
+ul.tabs {
+    width:350px;
+    margin:0;
+    padding:0;
+}
+ul.tabs li {
+    display:block;
+    float:left;
+    padding:0 5px;
+}
+ul.tabs li a {
+    display:block;
+    float:left;
+    padding:5px;
+    font-size:0.8em;
+    background-color:#e0e0e0;
+    color:#666;
+    text-decoration:none;
+}
+.selected {
+    font-weight:bold;
+}
+.tab-content {
+    clear:both;
+    border:1px solid #ddd;
+    padding:10px;
+}
+</style>
+
+<script type="text/javascript">
+/**
+pon aquí tu código
+**/
+
+		$(document).ready(function(){
+		
+			//ocultamos todos los contenidos salvo el primero
+			$("div.tabsContainer > div:gt(0)").hide();
+					
+			//Al hacer click sobre un titulo eliminamos la clase de selected en todos los titulos y luesgo se lo añadimos al clickado
+			$("ul.tabs li").on("click", function(e) {
+				console.log($("ul.tabs  a").attr("class"));
+				$("ul.tabs  a").removeClass("selected");
+				$(this).children("a").addClass("selected");		
+		
+				console.log("Indice: " + $(this).index());
+				//Si pulsamos sobre un titulo, ocultamos los demás contenidos y mostramos éste
+				$("div.tabsContainer > div").hide();
+				$("div.tabsContainer > div:eq(" + $(this).index() + ")").fadeIn("slow");
+			});
+		
+			
+		});
+
+</script>
+
+<body>
+	<div id="wrapper">
+		<ul class="tabs">
+			<li><a href="#" class="selected">Tab #1</a></li>
+			<li><a href="#">Tab #2</a></li>
+			<li><a href="#">Tab #3</a></li>
+		</ul>
+		<div class="tabsContainer">
+			<div class="tab-content">Contenido del primer tab</div>
+			<div class="tab-content">Contenido del segundo tab</div>
+			<div class="tab-content">Contenido del tercer tab</div>
+		</div>
+	</div>
+</body>
+</html>

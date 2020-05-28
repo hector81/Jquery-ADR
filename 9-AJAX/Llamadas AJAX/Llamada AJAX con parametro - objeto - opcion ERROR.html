@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Llamada AJAX con parametro - objeto - opcion ERROR</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("div.elem").one("click",function(e){
+		//peticion ajax
+		$.ajax({
+		   // URL a la que realizar la petición
+		   url : 'target.phpogg',
+		   // tipo de respuesta esperada
+		   dataType: 'json',
+		   //función que controla la respuesta devuelta por el servidor
+		   success: function(htmlData, status, jqxHR){
+		   },
+		   error: function(jqXHR, exception) {
+			  if (jqXHR.status === 0) {
+				 alert('No conectado.\n Verificar la conexión a Internet.');
+			  } else if (jqXHR.status == 404) {
+				 alert('Página no encontrada [404]');
+			  } else if (jqXHR.status == 500) {
+				 alert('Error interno del servidor [500].');
+			  } else if (exception === 'parsererror') {
+				 alert('Elrror al procesar la respuesta JSON.');
+			  } else if (exception === 'timeout') {
+				 alert('Tiempo máximo de respuesta superado.');
+			  } else if (exception === 'abort') {
+				 alert('Petición AJAX abortada.');
+			  } else {
+				 alert('Error no controlado.\n' + jqXHR.responseText);
+			  }
+		   }
+		});
+	});
+});
+	
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<div class="elem">
+		<h2>Enviar peticion por servidor mediante jQuery AJAX</h2>
+		<button>Boton ejecutar</button>
+	</div>
+</body>
+</html>

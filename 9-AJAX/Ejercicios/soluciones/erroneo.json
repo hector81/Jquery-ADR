@@ -1,0 +1,16 @@
+{
+    "response": {
+        "result": false,
+        "message": "Errores en los datos enviados",
+        "errorDetails": [
+            {
+                "fieldName": "email",
+                "errorDesc": "El email indicado pertenece a otro usuario"
+            },
+            {
+                "fieldName": "conocer",
+                "errorDesc": "Indique la forma de conocimiento de nuestro sitio"
+            }
+        ]
+    }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin titulo</title>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<style>
+body {
+    font-family:Arial;
+}
+
+ul.tabs {
+    width:350px;
+    margin:0;
+    padding:0;
+}
+ul.tabs li {
+    display:block;
+    float:left;
+    padding:0 5px;
+}
+ul.tabs li a {
+    display:block;
+    float:left;
+    padding:5px;
+    font-size:0.8em;
+    background-color:#e0e0e0;
+    color:#666;
+    text-decoration:none;
+}
+.selected {
+    font-weight:bold;
+}
+.tab-content {
+    clear:both;
+    border:1px solid #ddd;
+    padding:10px;
+	
+	display: none;
+}
+</style>
+
+<script type="text/javascript">
+/**
+pon aquí tu código
+**/
+
+
+
+$(document).ready(function(){
+	$('.tabs a:eq(0)').click(function(){
+		$('.tab-content:eq(0)').show("linear").index(0);
+		$('.tab-content:eq(1)').hide("linear").index(1);
+		$('.tab-content:eq(2)').hide("linear").index(2);
+	});
+	
+	$('.tabs a:eq(1)').click(function(){
+		$('.tab-content:eq(0)').hide("linear").index(0);
+		$('.tab-content:eq(1)').show("linear").index(1);
+		$('.tab-content:eq(2)').hide("linear").index(2);
+	});
+	
+	$('.tabs a:eq(2)').click(function(){
+		$('.tab-content:eq(0)').hide("linear").index(0);
+		$('.tab-content:eq(1)').hide("linear").index(1);
+		$('.tab-content:eq(2)').show("linear").index(2);
+	});
+});
+</script>
+
+<body>
+	<div id="wrapper">
+		<ul class="tabs">
+			<li><a href="#" id="aMostrarTab1" class="selected">Tab #1</a></li>
+			<li><a href="#" id="aMostrarTab2">Tab #2</a></li>
+			<li><a href="#" id="aMostrarTab3">Tab #3</a></li>
+		</ul>
+		<div class="tabsContainer">
+			<div class="tab-content">
+				<h1>Contenido del primer tab</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu sollicitudin mi, id scelerisque sem. Etiam enim diam, molestie quis purus sit amet, dapibus cursus purus. Mauris turpis odio, aliquam sed sollicitudin eu, vehicula eget urna. Duis sit amet pretium dolor. Quisque mollis in tortor eget luctus. Donec non ligula accumsan, pharetra orci eget, luctus arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis egestas suscipit lectus, non tristique ipsum scelerisque eget.</p>
+				<br><br><img src="arbol1.jpg"><br><br>
+			</div>
+			<div class="tab-content">
+				<h1>Contenido del segundo tab</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu sollicitudin mi, id scelerisque sem. Etiam enim diam, molestie quis purus sit amet, dapibus cursus purus. Mauris turpis odio, aliquam sed sollicitudin eu, vehicula eget urna. Duis sit amet pretium dolor. Quisque mollis in tortor eget luctus. Donec non ligula accumsan, pharetra orci eget, luctus arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis egestas suscipit lectus, non tristique ipsum scelerisque eget.</p>
+				<br><br><img src="arbol1.jpg"><br><br>
+			</div>
+			<div class="tab-content">
+				<h1>Contenido del tercer tab</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu sollicitudin mi, id scelerisque sem. Etiam enim diam, molestie quis purus sit amet, dapibus cursus purus. Mauris turpis odio, aliquam sed sollicitudin eu, vehicula eget urna. Duis sit amet pretium dolor. Quisque mollis in tortor eget luctus. Donec non ligula accumsan, pharetra orci eget, luctus arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis egestas suscipit lectus, non tristique ipsum scelerisque eget.</p>
+				<br><br><img src="arbol1.jpg"><br><br>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

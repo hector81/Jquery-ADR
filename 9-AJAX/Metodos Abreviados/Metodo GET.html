@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo GET</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+ $(document).ready(function(){
+   $("#filtroCategoria").on("change", function(e){
+      var categoryId = $(this).val();
+ 
+      //vaciamos el tbody de la tabla #tabDatos por si hay registros previos
+      $("#tabDatos tbody").empty();
+ 
+      //establecemos el mensaje de estado en el td .tdStatus
+      $("#tabDatos .tdStatus").html("Cargando datos...");
+ 
+      $.get(
+         "list_articulos.php",
+         { "idcategoria" : categoryId },
+         function(jsonData){
+            //mostramos el valor del mensaje devuelto por el servidor
+            $("#tabDatos .tdStatus").html(jsonData.message);
+            
+            if(jsonData.result == true){
+               //para cada uno de los datos devueltos
+               
+               $.each(jsonData.data, function(i, item) {
+                  //duplicamos la plantilla de producto
+ 
+                  $plantilla = $("#tabDatos .tplProduct").clone();
+                  
+                  //preparamos la plantilla, eliminando la clase y quitando el atributo style
+                  $plantilla.removeClass("tplProduct").removeAttr("style");
+ 
+                  //establecemos la info del producto
+                  $plantilla.find(".displayId").html( item.productId );
+                  $plantilla.find(".displayDescription").html( item.description );
+                  $plantilla.find(".displayPrice").html( item.price);
+                  if(item.available){
+                     $plantilla.find(".displayAvailable").html( "Producto Disponible" );
+                  }
+                  else{
+ 
+                     $plantilla.find(".displayAvailable").html( "Producto fuera de stock" );
+                  }
+ 
+                  $("#tabDatos tbody").append($plantilla);
+                  //otra forma de realizar esta acción sería $plantilla.appendTo($("#tabDatos tbody"));
+               });
+            }
+         },
+         "json"
+      );
+   });
+});
+	
+	
+	//Respuesta satisfactoria
+	//{
+	//   "result": 1,
+	//   "resultText": "Registro guardado correctamente"
+	//}
+	
+	//Respuesta negativa
+	//{
+	//   "result": 0,
+	//   "resultText": "La direcci&oacute;n de correo electr&oacute;nico indicada pertenece a un usuario ya registrado"
+	//}
+
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<div id="catalogoDisplay">
+	  <h1>Cat&aacute;logo Online</h1>
+	  <div class="filtroData">
+		<span>Seleccione la categor&iacute;a para filtrar</span>
+		<select id="filtroCategoria">
+			<option value="">-- Categor&iacute;a --</option>
+			<option value="01">Ordenadores Sobremesa</option>
+			<option value="02">Ordenadores Port&aacute;tiles</option>
+			<option value="12">Almacenamiento</option>
+			<option value="15">Monitores</option>
+		</select>
+	  </div>
+	  <div class="displayData">
+		<table id="tabDatos">
+		  <thead>
+			<tr>
+			  <th>ID</th>
+			  <th>Descripci&oacute;n</th>
+			  <th>Precio</th>
+			  <th>Disponible</th>
+			</tr>
+		  </thead>
+		  <tbody>
+		  </tbody>
+		  <tfoot>
+			<tr>
+			  <td class="tdStatus" colspan="4"></td>
+			</tr>
+			<tr class="tplProduct" style="display:none;">
+			  <td class="displayId"></td>
+			  <td class="displayDescription"></td>
+			  <td class="displayPrice"></td>
+			  <td class="displayAvailable"></td>
+			</tr>
+		  </tfoot>
+		</table>
+	  </div>
+	</div>
+</body>
+</html>

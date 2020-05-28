@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo getJSON</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+ $(document).ready(function(){
+   $("#filtroCategoria").on("change", function(e){
+		 //Metodo getJSON
+		 $.ajax({
+		   type: "GET"
+		   dataType: "json",
+		   url: url,
+		   data: data,
+		   success: success
+		});
+		///////////////////
+   });
+});
+
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<div id="catalogoDisplay">
+	  <h1>Cat&aacute;logo Online</h1>
+	  <div class="filtroData">
+		<span>Seleccione la categor&iacute;a para filtrar</span>
+		<select id="filtroCategoria">
+			<option value="">-- Categor&iacute;a --</option>
+			<option value="01">Ordenadores Sobremesa</option>
+			<option value="02">Ordenadores Port&aacute;tiles</option>
+			<option value="12">Almacenamiento</option>
+			<option value="15">Monitores</option>
+		</select>
+	  </div>
+	  <div class="displayData">
+		<table id="tabDatos">
+		  <thead>
+			<tr>
+			  <th>ID</th>
+			  <th>Descripci&oacute;n</th>
+			  <th>Precio</th>
+			  <th>Disponible</th>
+			</tr>
+		  </thead>
+		  <tbody>
+		  </tbody>
+		  <tfoot>
+			<tr>
+			  <td class="tdStatus" colspan="4"></td>
+			</tr>
+			<tr class="tplProduct" style="display:none;">
+			  <td class="displayId"></td>
+			  <td class="displayDescription"></td>
+			  <td class="displayPrice"></td>
+			  <td class="displayAvailable"></td>
+			</tr>
+		  </tfoot>
+		</table>
+	  </div>
+	</div>
+</body>
+</html>

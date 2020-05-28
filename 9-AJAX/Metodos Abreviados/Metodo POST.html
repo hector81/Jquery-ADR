@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo POST</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+   $("ajaxform").on("submit", function(e){
+      //cancelamos el comportamiento por defecto del evento
+      e.preventDefault();
+ 
+      //obtenemos el atributo "action" del evento
+      //para utilizarlo como URL en el envío
+      var urlDestino = $(this).attr("action")
+ 
+      //capturamos los valores de los elementos del formulario
+      var dataEnviar = $(this).serialize();
+ 
+      //realizamos la llamada al método con 4 parámetros
+      $.post(
+         //1- la URL a la que realizar la petición
+         urlDestino,
+         //2- los datos a enviar
+         dataEnviar,
+         //3- la función controladora de la respuesta
+         function(dataRespuesta){
+            if(dataRespuesta.result==1){
+               $("#msg_status").addClass("resultOk");
+            }
+            else{
+               $("#msg_status").addClass("resultFail");
+            }
+ 
+            $("#msg_status").html(dataRespuesta.resultText);
+         },
+         //4- el tipo de dato esperado como respuesta
+         "json"
+      );
+   });
+);
+	
+	
+	//Respuesta satisfactoria
+	//{
+	//   "result": 1,
+	//   "resultText": "Registro guardado correctamente"
+	//}
+	
+	//Respuesta negativa
+	//{
+	//   "result": 0,
+	//   "resultText": "La direcci&oacute;n de correo electr&oacute;nico indicada pertenece a un usuario ya registrado"
+	//}
+
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<h2>FORMULARIO ENVIADO POR AJAX</h2>
+		<form id="ajaxform" action="destino.php" method="POST" >
+		   Nombre : <input type="text" name="nombre" id="nombre" />
+		   Email : <input type="text" name="email" id="email" />
+		   <input type="submit" name="enviar" value="Enviar" id="sbmenviar" /> 
+		   <div id="msg_status"></div>
+		</form>
+</body>
+</html>
