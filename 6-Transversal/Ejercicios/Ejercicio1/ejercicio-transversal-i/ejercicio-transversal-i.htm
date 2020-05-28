@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ejercicio Transversal I</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#btnOcultadiv1").on("click", function(e){
+        e.preventDefault();
+		//Introduce el codigo necesario para que al pulsar el boton, obtengamos una seleccion con el div#divUno utilizando como base el selector indicado.
+		//$("#divUno").children().hide();
+		//$("#divUno p").slice(0, 2).hide();
+		//$("#divUno").children().not(":last").hide();
+		//$("#divUno").eq(0).hide();
+		$("#btnOcultadiv1").parents("#divUno").hide();
+
+		//$("#btnOcultadiv1");
+    });
+	
+    $("#btnOcultarDiv2").on("click", function(e){
+        e.preventDefault();
+		//Introduce el codigo necesario para que al pulsar el boton, obtengamos una seleccion con el div#divDos utilizando como base el selector indicado.
+		//$("#btnOcultarDiv2").parents("div#divDos").hide();
+		$("div#divDos").children( "p" ).hide();
+
+		//$("#btnOcultarDiv2");
+    });
+});
+
+		
+</script>
+</head>
+<body>
+<h3>En la cabecera del documento, están capturados los eventos de pulsación de los botones. Completa el selector indicado en cada uno de ellos, haciendo uso de un método transversal.</h3>
+<div id="divUno">
+	<p>
+		 Div n&uacute;mero 1 con identificador divUno
+	</p>
+	<p>
+		<input id="btnOcultadiv1" type="button" value="Ocultar Div 1"/>
+	</p>
+</div>
+<div id="divDos">
+	<p>
+		 Div n&uacute;mero 2 con identificador divDos
+	</p>
+	<div id="divDescendiente3">
+		<p>
+			 Div descendiente del div #divDos
+		</p>
+		<p>
+			<input id="btnOcultarDiv2" type="button" value="Ocultar Div 2"/>
+		</p>
+	</div>
+	<p>
+	</div>
+	 &nbsp;
+</p>
+</body>
+</html>

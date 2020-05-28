@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo jquery - each</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(function(){   
+		var arr = [ "one", "two", "three", "four", "five" ];
+		var obj = { one: 1, two: 2, three: 3, four: 4, five: 5 };
+		 
+		jQuery.each( arr, function( i, val ) {
+		  $( "#" + val ).text( "Mine is " + val + "." );
+		 
+		  // Will stop running after "three"
+		  return ( val !== "three" );
+		});
+		 
+		jQuery.each( obj, function( i, val ) {
+		  $( "#" + i ).append( document.createTextNode( " - " + val ) );
+		});
+	});
+	
+	//https://www.google.com/search?q=jquery+each&oq=jquery+each&aqs=chrome..69i57j0l2j69i60l3.9263j0j4&sourceid=chrome&ie=UTF-8
+</script>
+<style type="text/css">
+		  div {
+			color: blue;
+		  }
+		  div#five {
+			color: red;
+		  }
+</style>
+</head>
+<body>
+	<div id="one"></div>
+	<div id="two"></div>
+	<div id="three"></div>
+	<div id="four"></div>
+	<div id="five"></div>
+</body>
+</html>

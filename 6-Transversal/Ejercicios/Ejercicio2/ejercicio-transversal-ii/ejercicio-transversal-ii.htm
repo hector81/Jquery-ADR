@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ejercicio Transversal II</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#btnObtieneName1").on("click", function(e){
+        e.preventDefault();
+		//Introduce el codigo necesario para que al pulsar el boton, obtengamos una seleccion con el div#divUno utilizando como base el selector indicado.
+		//$seleccion = $("form#formUno input[name=name1]");
+		//alert( $seleccion.val());
+		
+		alert( $(this).parent("div#divUno input[name=name1]").val());
+		//$(this);
+		//también se podría utilizar $("#btnObtieneName1")
+    });
+	
+    $("#btnObtieneName2").on("click", function(e){
+        e.preventDefault();
+		//Introduce el codigo necesario para que al pulsar el boton, obtengamos una seleccion con el div#divDos utilizando como base el selector indicado.
+		
+		$(this);
+		//también se podría utilizar $("#btnObtieneName2")
+    });
+});
+</script>
+</head>
+<body>
+<h3>En la cabecera del documento, están capturados los eventos de pulsación de los botones. Completa el selector indicado en cada uno de ellos, utilizando método transversales encadenados, para lograr conseguir como selección final:</h3>
+<p>El elemento input#name1 </p>
+<p>El elemento input#name2 </p>
+<form id="formUno">
+<div id="divUno">
+	<fieldset>
+		<legend>Legend Name</legend>
+		<label for="name1">Name</label>
+		<input type="text" name="name1" id="name1" />
+	</fieldset>
+	<p>
+		<input id="btnObtieneName1" type="button" value="Obtener input name1"/>
+	</p>
+</div>
+</form>	
+<form id="formDos">
+<div id="divDos">
+	<p>
+		<input id="btnObtieneName2" type="button" value="Obtener input name2"/>
+	</p>
+	<fieldset>
+		<legend>Legend Name</legend>
+		<label for="name2">Name</label>
+		<input type="text" name="name2" id="name2" />
+	</fieldset>
+</div>
+</form>	
+</body>
+</html>

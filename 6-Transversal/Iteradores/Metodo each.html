@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo each</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(function(){   
+		$("button").click(function(){
+			$("li").each(function(){
+			  alert($(this).text())
+			});
+		  });
+	});
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	
+	<button>Alert the value of each list item</button>
+
+	<ul>
+	  <li>Coffee</li>
+	  <li>Milk</li>
+	  <li>Soda</li>
+	</ul>
+</body>
+</html>

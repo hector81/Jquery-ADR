@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo is</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(function(){
+	  $elemento=$("#social_box");//cogemos un elemento y le asignamos una variable
+	  //selector como parametro
+	  if($elemento.is(":first-child")){
+		console.log("Es el primer elemento hijo de su padre");
+	  }
+	  else
+	  {
+		console.log("No es el primer elemento hijo de su padre");
+	  }
+	  //funcion como parametro	
+	  if($elemento.is(function(index){
+		return this.tagName == "ul";
+		//equivale a $(this).is("ul");
+	  })){
+		console.log("El elemento seleccionado es un UL");
+	  }
+	  else
+	  {
+		console.log("El elemento seleccionado no es un UL");
+	  }
+	  //elemento como parametro
+	  miElemento=document.getElementById("lang_links");
+	  if($elemento.is(miElemento)){
+		console.log("El elemento seleccionado es #lang_links");
+	  }
+	  else
+	  {
+		console.log("El elemento seleccionado no es #lang_links");
+	  }
+	  //objeto jquery como parametro
+	  if($elemento.is($("*[id]"))){
+		console.log("El elemento es un elemento con id");
+	  }
+	  else
+	  {
+		console.log("El elemento es un elemento sin id");
+	  }
+	});
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<div id="header">
+		<div id="site_title">
+			<h1><a href="#"><strong>GLOSSY</strong> BOX<span>YOUR TAGLINE GOES HERE</span></a></h1>
+		</div> <!-- end of site_title -->
+			<ul id="lang_links">
+				<li><a href="#" lang="es" dir="ltr">ES</a></li>
+				<li><a href="#" lang="en" dir="ltr">EN</a></li>
+				<li><a href="#" lang="fr" dir="rtl">FR</a></li>
+			</ul>
+			<ul id="social_box">
+				<li><a href="#" title="Publicar en Facebook"><img src="img/facebook.png" alt="publicar-facebook"></a></li>
+				<li><a href="#" title="Publicar en Twitter"><img src="img/twitter.png" alt="publicar-twitter"></a></li>
+				<li><a href="#" title="Publicar en LinkedIn"><img src="img/linkedin.png" alt="publicar"></a></li>
+				<li><a href="#" title="En Technorati"><img src="img/technorati.png" alt="technorati"></a></li>
+			</ul>
+		<div class="cleaner"></div>
+	</div>
+	<div id="content">
+		<a href="#">Enlace 1</a>
+		<a href="#">Enlace 2</a>
+	</div>
+</body>
+</html>

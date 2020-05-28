@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo map</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(function(){   
+		$( ":checkbox" )
+		  .map(function() {
+			return this.id;
+		  })
+		  .get()
+		  .join();
+
+			});
+			
+	
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<form method="post" action="">
+	  <fieldset>
+		<div>
+		  <label for="two">2</label>
+		  <input type="checkbox" value="2" id="two" name="number[]">
+		</div>
+		<div>
+		  <label for="four">4</label>
+		  <input type="checkbox" value="4" id="four" name="number[]">
+		</div>
+		<div>
+		  <label for="six">6</label>
+		  <input type="checkbox" value="6" id="six" name="number[]">
+		</div>
+		<div>
+		  <label for="eight">8</label>
+		  <input type="checkbox" value="8" id="eight" name="number[]">
+		</div>
+	  </fieldset>
+	</form>
+</body>
+</html>
