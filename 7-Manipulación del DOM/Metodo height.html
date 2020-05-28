@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo height</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(function(){
+		  console.log( 'Altura del div#header ' + $("#header").height() );
+		  console.log( 'Altura del div#content ' + $("#content").height() );
+		  console.log( 'Altura del div.all ' + $(".all").height() );
+		 
+		  console.log( 'Altura del documento ' + $(document).height() );
+	});
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<div class="all">
+	   <div id="header">Header de la p&aacute;gina</div>
+	   <div id="content">Contenido<br />de la p&aacute;gina</div>
+	</div>
+</body>
+</html>

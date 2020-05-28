@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo attr</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(function(){   
+		//mostrar el atributo action del formulario en la consola
+	  console.log( "El valor del atributo 'action' es: " + $("#srchForm").attr("action") );
+	  
+	  //modificar el atributo enctype del formulario
+	  $("#srchForm").attr( "enctype", "multipart/form-data" );
+	});
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<div id="srchContent">
+	  <form id="srchForm" type="get" action="#">
+		<input id="srchText" name="srchText" type="text" />
+	  </form>
+	</div>
+</body>
+</html>

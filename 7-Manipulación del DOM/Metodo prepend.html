@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo prepend</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#btn1").click(function(){
+		$("p").prepend("<b>Prepended text</b>. ");
+	  });
+	  $("#btn2").click(function(){
+		$("ol").prepend("<li>Prepended item</li>");
+  });
+
+});
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<p>This is a paragraph.</p>
+	<p>This is another paragraph.</p>
+
+	<ol>
+	  <li>List item 1</li>
+	  <li>List item 2</li>
+	  <li>List item 3</li>
+	</ol>
+
+	<button id="btn1">Prepend text</button>
+	<button id="btn2">Prepend list item</button>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo crear elementos dinamicamente funcion dolar</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(function(){
+
+		var $div = $("<div/>");
+   
+		var $div2 = $("<div>Elemento de tipo DIV</div>");
+	  
+		var $div3 = $("<div id='dynamicDiv'> Elemento de tipo DIV <span>con un SPAN</span></div>");
+		
+		//apppend
+		$( "<div>DIV creado al vuelo</div>" ).appendTo( "body" );
+		
+		//objeto
+		$("<div />", {id:"newDiv", class:"dynamic", text:"Este es un nuevo DIV creado al vuelo con propiedades"});
+
+		//parecido a <div id="newDiv" class="dynamic">Este es un nuevo DIV creado al vuelo con propiedades</div>
+		//equivalente a 
+		$('<div id="newDiv" class="dynamic"> Este es un nuevo DIV creado al vuelo con propiedades </div> ');
+ 
+		$("<div />")
+		  .attr("id","newDiv")
+		  .addClass("dynamic")
+		  .text("Este es un nuevo DIV creado al vuelo con propiedades);
+
+	});
+</script>
+<style type="text/css">
+	#header{
+		float: right;
+		max-width: 250px;
+	}
+</style>
+</head>
+<body>
+	<div id="header">
+	</div>
+</body>
+</html>

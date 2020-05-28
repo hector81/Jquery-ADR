@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo outerHeight</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+ <script type="text/javascript">
+	$(document).ready(function(){
+		  console.log( 'Height y padding del div#header ' + $("#header").outerHeight() );
+		  console.log( 'Height y padding del div#content ' + $("#content").outerHeight() );
+		  console.log( 'Height y padding del div.all ' + $(".all").outerHeight() );
+		 
+		  console.log( 'Altura del documento ' + $(document).outerHeight() );
+	});
+</script>
+<style type="text/css">
+	.all {
+		height:600px;
+		padding :20px;
+		background-color: pink;
+	}
+	
+	#header {
+		height:200px;
+		padding :10px;
+		background-color: yellow;
+	}
+	
+	#content {
+		height:200px;
+		padding :30px;
+		background-color: green;
+	}
+</style>
+</head>
+<body>
+	<div class="all">
+	   <div id="header">Header de la p&aacute;gina</div>
+	   <div id="content">Contenido<br />de la p&aacute;gina</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Metodo insertAfter</title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#btnAddUrl").on("click", function(e){
+        e.preventDefault();
+        $newControl = $("#controls .urlTemplate").clone();
+        $newControl.insertAfter( $("#urls .listHead") );
+        $("#urls .urlTemplate").removeAttr("style");
+    });
+});
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<div id="urls">
+	   <span class="listHead">Lista de Urls:</span>
+	</div>
+	<div id="controls">
+	   <div class="urlTemplate" style="display: none;">
+		  <label>URL</label> <input type="text">
+	   </div>
+	   <input type="button" id="btnAddUrl" value="+">
+	</div>
+</body>
+</html>
